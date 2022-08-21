@@ -31,51 +31,47 @@ final class LoginController: BaseController {
         addKeypadListener()
     }
     
-    func setupBindings() {
-        userNameField
-            .rx
-            .text
-            .bind(to: viewModel.username)
-            .disposed(by: viewModel.disposeBag)
-        
-        passwordField
-            .rx
-            .text
-            .bind(to: viewModel.password)
-            .disposed(by: viewModel.disposeBag)
-        
-//        viewModel
-//            .isValid
-//            .bind(to: loginButton.rx.isEnabled)
-//            .disposed(by: viewModel.disposeBag)
-        
-        viewModel.result
-            .subscribe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] result in
-                switch result {
-                case.success:
-                    self?.showDashboard()
-                case let .failure(error):
-                    self?.showAlert(message: error.description)
-                }
-            }, onError: { error in
-                self.showAlert(message: error.localizedDescription)
-            })
-            .disposed(by: viewModel.disposeBag)
+    @IBAction private func selectCountry(sender: UIButton) {
+        dismissKeypad()
+        showCountryPicker(sender)
+    }
+    
+    @IBAction private func loginAction() {
+        dismissKeypad()
+        loginRequest()
     }
 }
 
 // MARK: Protected methods
 private extension LoginController{
     
-    @IBAction func selectCountry(sender: UIButton) {
-        dismissKeypad()
-        showCountryPicker(sender)
+    func setupBindings() {
+        userNameField.rx.text
+            .bind(to: viewModel.username)
+            .disposed(by: viewModel.disposeBag)
+        passwordField.rx.text
+            .bind(to: viewModel.password)
+            .disposed(by: viewModel.disposeBag)
+        viewModel.isValid
+            .bind(to: loginButton.rx.isEnabled)
+            .disposed(by: viewModel.disposeBag)
+        viewModel.result
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] result in
+                self?.handleLogin(result)
+            }, onError: { error in
+                self.showAlert(message: error.localizedDescription)
+            })
+            .disposed(by: viewModel.disposeBag)
     }
     
-    @IBAction func loginAction() {
-        dismissKeypad()
-        loginRequest()
+    func handleLogin(_ result: LoginResult) {
+        switch result {
+        case.success:
+            showDashboard()
+        case let .failure(error):
+            showAlert(message: error.description)
+        }
     }
     
     func loginRequest() {
