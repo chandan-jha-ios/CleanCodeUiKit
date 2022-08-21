@@ -15,6 +15,8 @@ struct Constant {
 enum AppColor {
     case theme
     case black
+    case disabled
+    case activeButton
     
     var value: UIColor {
         switch self {
@@ -22,6 +24,10 @@ enum AppColor {
             return UIColor(hexString: "#77E0C1")
         case .black:
             return UIColor.black
+        case .disabled:
+            return UIColor.lightGray.withAlphaComponent(0.8)
+        case .activeButton:
+            return UIColor.systemPink
         }
     }
 }
