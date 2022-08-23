@@ -19,11 +19,11 @@ struct LoginManager {
         repository.create(user)
     }
     
-    func isRegistered(user: User)-> Bool {
+    func isRegistered(user: User)-> ValidationResult {
         repository.validate(user)
     }
     
-    func validate(user: User) -> Bool {
+    func validate(user: User) -> ValidationResult {
         repository.validate(user)
     }
 }

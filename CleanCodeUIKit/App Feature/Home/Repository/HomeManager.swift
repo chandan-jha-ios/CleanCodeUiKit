@@ -5,8 +5,10 @@
 //  Created by Chandan Jha on 23/08/22.
 //
 
+typealias UserCompletion = ((NetworkError?, [UserData]?) -> Void)
+
 protocol UserFetchable {
-    func fetchUsers(service: Requestable, completion: @escaping ((NetworkError?, [UserData]?) -> Void))
+    func fetchUsers(service: Requestable, completion: @escaping UserCompletion)
 }
 
 /// All the api network call be trigereed here for home view model
@@ -18,7 +20,7 @@ struct HomeManager: UserFetchable {
         self.networkAdaptor = networkAdaptor
     }
     
-    func fetchUsers(service: Requestable, completion: @escaping ((NetworkError?, [UserData]?) -> Void)) {
+    func fetchUsers(service: Requestable, completion: @escaping UserCompletion) {
         guard let request = try? service.urlRequest() else {
             completion(NetworkError(statusCode: nil, description: "Something went wrong"), nil)
             return

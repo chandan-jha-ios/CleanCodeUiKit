@@ -70,7 +70,7 @@ private extension LoginController {
         let user = User(userName: "taxi",
                         password: password,
                         country: "India")
-        if viewModel.manager.isRegistered(user: user) == false {
+        if viewModel.manager.isRegistered(user: user).0 == false {
             viewModel.manager.create(user: user)
         }
     }
