@@ -50,3 +50,5 @@ extension Resultable {
         }
     }
 }
+
+extension Array: Resultable where Element: Resultable { }

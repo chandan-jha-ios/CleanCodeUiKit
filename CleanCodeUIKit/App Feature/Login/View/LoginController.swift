@@ -13,7 +13,7 @@ import RxSwift
 final class LoginController: BaseController {
     
     private enum Keys: String {
-        case appTitle = "Taxi"
+        case pageTitle = "Taxi"
     }
     
     // MARK: IBOutlets
@@ -37,9 +37,28 @@ final class LoginController: BaseController {
         createTestUser()
         setupDidload()
     }
+
+}
     
+    // MARK: Protected methods
+private extension LoginController {
+    
+    @IBAction func selectCountry(sender: UIButton) {
+        dismissKeypad()
+        showCountryPicker(sender)
+    }
+    
+    @IBAction func loginAction() {
+        dismissKeypad()
+        if viewModel.validateForm {
+            loginRequest()
+        } else {
+            showErrors()
+        }
+    }
+
     func setupDidload() {
-        titleLabel.text = Keys.appTitle.rawValue
+        titleLabel.text = Keys.pageTitle.rawValue
         headerView.backgroundColor = AppColor.activeButton.value
         setupBindings()
         showHideErrorLabels()
@@ -56,42 +75,54 @@ final class LoginController: BaseController {
         }
     }
     
-    @IBAction private func selectCountry(sender: UIButton) {
-        dismissKeypad()
-        showCountryPicker(sender)
-    }
-    
-    @IBAction private func loginAction() {
-        dismissKeypad()
-        if viewModel.validateForm {
-            loginRequest()
-        } else {
-            showErrors()
-        }
-    }
-}
-
-// MARK: Protected methods
-private extension LoginController{
-    
     func setupBindings() {
+        bindFields()
+        bindDataValidation()
+        bindLoginResponse()
+    }
+    
+    func bindFields() {
         userNameField.rx.text
             .bind(to: viewModel.username)
             .disposed(by: viewModel.disposeBag)
         passwordField.rx.text
             .bind(to: viewModel.password)
             .disposed(by: viewModel.disposeBag)
+    }
+    
+    func bindDataValidation() {
         viewModel.isValid
             .subscribe(onNext: { [weak self] result in
-                let backgroundColor = result ? AppColor.activeButton.value : AppColor.disabled.value
-                if #available(iOS 15.0, *) {
-                    self?.loginButton.configuration?.background.backgroundColor = backgroundColor
-                } else {
-                    self?.loginButton.backgroundColor = backgroundColor
-                }
-                self?.showHideErrorLabels()
+                self?.updateLoginBtn(state: result)
             })
             .disposed(by: viewModel.disposeBag)
+        viewModel.username
+            .subscribe(onNext: { [weak self] value in
+                if value?.isEmpty == false {
+                    self?.userNameErrorLabel.isHidden = true
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        viewModel.password
+            .subscribe(onNext: { [weak self] value in
+                if value?.isEmpty == false {
+                    self?.passwordErrorLabel.isHidden = true
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
+    }
+    
+    func updateLoginBtn(state: Bool) {
+        let backgroundColor = state ? AppColor.activeButton.value : AppColor.disabled.value
+        if #available(iOS 15.0, *) {
+            loginButton.configuration?.background.backgroundColor = backgroundColor
+        } else {
+            loginButton.backgroundColor = backgroundColor
+        }
+    }
+    
+    func bindLoginResponse() {
         viewModel.result
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] result in
@@ -100,6 +131,7 @@ private extension LoginController{
                 self?.showAlert(message: error.localizedDescription)
             })
             .disposed(by: viewModel.disposeBag)
+        
     }
     
     func handleLogin(_ result: LoginResult) {
@@ -133,7 +165,7 @@ private extension LoginController{
     }
     
     func showDashboard() {
-        
+        (UIApplication.shared.delegate as? AppDelegate)?.showHomeOrLogin()
     }
 }
 

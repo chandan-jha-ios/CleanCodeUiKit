@@ -9,7 +9,7 @@ import UIKit
 
 struct Constant {
     static var country = ["India", "Singapore", "Europe", "US"]
-    static var baseUrl = ""
+    static var baseUrl = "https://jsonplaceholder.typicode.com"
 }
 
 enum AppColor {

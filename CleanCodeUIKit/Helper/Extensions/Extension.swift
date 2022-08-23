@@ -18,11 +18,12 @@ extension HTTPURLResponse {
 
 extension String {
     
-    func appendPath(version: Version, path: String) -> String {
+    func appendPath(version: Version?, path: String) -> String {
         var output = self
         output = [output, path].joined(separator: "/")
-        
-        if !version.rawValue.isEmpty {
+
+        if let version = version,
+           !version.rawValue.isEmpty {
             output = [output, version.rawValue].joined(separator: "/")
         }
         return output
@@ -116,6 +117,17 @@ extension UIViewController {
         navigationController?.navigationBar.backgroundColor = background
         navigationController?.navigationBar.tintColor = tint
         view.backgroundColor = background
+    }
+    
+    func showLogout() {
+        let rightItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logOut))
+        navigationItem.rightBarButtonItems = [rightItem]
+    }
+    
+    @objc func logOut() {
+        UserDefaults.standard.removeObject(forKey: "user")
+        UserDefaults.standard.synchronize()
+        (UIApplication.shared.delegate as? AppDelegate)?.showHomeOrLogin()
     }
 }
 

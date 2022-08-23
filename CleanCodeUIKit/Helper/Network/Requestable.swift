@@ -28,7 +28,7 @@ protocol Requestable {
     var params: [String: Any]? { get }
     var path: String { get }
     var endPoints: String? { get }
-    var version: Version { get }
+    var version: Version? { get }
 }
 
 extension Requestable {
@@ -39,6 +39,10 @@ extension Requestable {
     
     var headers: [String : String] {
         [:]
+    }
+    
+    var version: Version? {
+        nil
     }
     
     var url: URL? {

@@ -75,6 +75,8 @@ final class LoginViewModel: LoginRequestable {
             return
         }
         if manager.isRegistered(user: user) {
+            UserDefaults.standard.set(user.userName, forKey: "user")
+            UserDefaults.standard.synchronize()
             result.accept(.success)
         } else {
             let error = NetworkError(description: LoginErrorKeys.userNotFound.rawValue)

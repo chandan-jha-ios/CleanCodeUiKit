@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		13D4DED89ECF811227471CE1 /* Pods_CleanCodeUIKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BB1E6D1F4DC89C5E7949C5 /* Pods_CleanCodeUIKitTests.framework */; };
 		31056FC78ACFC0FD109F92DE /* Pods_CleanCodeUIKit_CleanCodeUIKitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70B7DB9FE976B88A9AA1B8 /* Pods_CleanCodeUIKit_CleanCodeUIKitUITests.framework */; };
+		5855289D28B486A300A8AC78 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5855289C28B486A300A8AC78 /* HomeController.swift */; };
+		5855289F28B486C500A8AC78 /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5855289E28B486C500A8AC78 /* HomeStoryboard.storyboard */; };
+		585528A428B48AD000A8AC78 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585528A328B48AD000A8AC78 /* UserData.swift */; };
+		585528A628B48B7D00A8AC78 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585528A528B48B7D00A8AC78 /* HomeViewModel.swift */; };
+		585528A928B48CAD00A8AC78 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585528A828B48CAD00A8AC78 /* HomeService.swift */; };
+		585528AC28B4F9D400A8AC78 /* HomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585528AB28B4F9D400A8AC78 /* HomeManager.swift */; };
 		5881343328AE03DE00B6FA8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5881343228AE03DE00B6FA8D /* AppDelegate.swift */; };
 		5881343728AE03DE00B6FA8D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5881343628AE03DE00B6FA8D /* LoginController.swift */; };
 		5881343A28AE03DE00B6FA8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5881343828AE03DE00B6FA8D /* Main.storyboard */; };
@@ -65,6 +71,12 @@
 		2F9B220151525D32F0EC196C /* Pods-CleanCodeUIKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanCodeUIKitTests.debug.xcconfig"; path = "Target Support Files/Pods-CleanCodeUIKitTests/Pods-CleanCodeUIKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		30BB1E6D1F4DC89C5E7949C5 /* Pods_CleanCodeUIKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanCodeUIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D70B7DB9FE976B88A9AA1B8 /* Pods_CleanCodeUIKit_CleanCodeUIKitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanCodeUIKit_CleanCodeUIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5855289C28B486A300A8AC78 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		5855289E28B486C500A8AC78 /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
+		585528A328B48AD000A8AC78 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		585528A528B48B7D00A8AC78 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		585528A828B48CAD00A8AC78 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		585528AB28B4F9D400A8AC78 /* HomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeManager.swift; sourceTree = "<group>"; };
 		5881342F28AE03DE00B6FA8D /* CleanCodeUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanCodeUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5881343228AE03DE00B6FA8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5881343628AE03DE00B6FA8D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -135,6 +147,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		585528A028B486E200A8AC78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5855289C28B486A300A8AC78 /* HomeController.swift */,
+				5855289E28B486C500A8AC78 /* HomeStoryboard.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		585528A128B486F100A8AC78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				585528A328B48AD000A8AC78 /* UserData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		585528A228B486F600A8AC78 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				585528A528B48B7D00A8AC78 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		585528A728B48C8F00A8AC78 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				585528A828B48CAD00A8AC78 /* HomeService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		585528AA28B4F9C500A8AC78 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				585528AB28B4F9D400A8AC78 /* HomeManager.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		5881342628AE03DE00B6FA8D = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +213,6 @@
 		5881343128AE03DE00B6FA8D /* CleanCodeUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				58CC697028B1F0C400DE88BC /* Database */,
 				5881346B28AE170900B6FA8D /* Helper */,
 				58CC696F28B1F09C00DE88BC /* App Feature */,
 				5881343228AE03DE00B6FA8D /* AppDelegate.swift */,
@@ -194,7 +246,6 @@
 			children = (
 				58CC698628B24CE800DE88BC /* Validator */,
 				58CC698328B2358600DE88BC /* Repository */,
-				58CC698028B2352F00DE88BC /* Manager */,
 				5881346928AE16D900B6FA8D /* Model */,
 				5881346A28AE16E700B6FA8D /* View */,
 				5881346828AE16CB00B6FA8D /* ViewModel */,
@@ -232,6 +283,7 @@
 			children = (
 				58CC696028B1DEBB00DE88BC /* Extensions */,
 				58CC695728B1DEBB00DE88BC /* Network */,
+				58CC697028B1F0C400DE88BC /* Database */,
 				58CC695F28B1DEBB00DE88BC /* Router.swift */,
 				58CC695528B1DC0600DE88BC /* Constant.swift */,
 				58CC695028B1C82C00DE88BC /* BaseController.swift */,
@@ -242,6 +294,11 @@
 		5881346C28AE171600B6FA8D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				585528AA28B4F9C500A8AC78 /* Repository */,
+				585528A728B48C8F00A8AC78 /* Service */,
+				585528A228B486F600A8AC78 /* ViewModel */,
+				585528A128B486F100A8AC78 /* Model */,
+				585528A028B486E200A8AC78 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -317,6 +374,7 @@
 		58CC698328B2358600DE88BC /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				58CC698028B2352F00DE88BC /* Manager */,
 				58CC698428B2359700DE88BC /* UserLocalRepository.swift */,
 			);
 			path = Repository;
@@ -464,6 +522,7 @@
 			files = (
 				5881344228AE03E000B6FA8D /* LaunchScreen.storyboard in Resources */,
 				5881343F28AE03E000B6FA8D /* Assets.xcassets in Resources */,
+				5855289F28B486C500A8AC78 /* HomeStoryboard.storyboard in Resources */,
 				5881343A28AE03DE00B6FA8D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,14 +656,18 @@
 				58CC696928B1DEBB00DE88BC /* Resultable.swift in Sources */,
 				58CC697F28B231A900DE88BC /* LoginValidator.swift in Sources */,
 				58CC697A28B20B6500DE88BC /* CDUser+CoreDataClass.swift in Sources */,
+				585528A428B48AD000A8AC78 /* UserData.swift in Sources */,
 				58CC696728B1DEBB00DE88BC /* NetworkAdaptor.swift in Sources */,
+				5855289D28B486A300A8AC78 /* HomeController.swift in Sources */,
 				58CC696E28B1EED200DE88BC /* Utility.swift in Sources */,
 				58CC696428B1DEBB00DE88BC /* NetworkManager.swift in Sources */,
 				58CC695628B1DC0600DE88BC /* Constant.swift in Sources */,
 				58CC696628B1DEBB00DE88BC /* NetworkResult.swift in Sources */,
+				585528A928B48CAD00A8AC78 /* HomeService.swift in Sources */,
 				58CC696B28B1DEBB00DE88BC /* CommonTypeAlias.swift in Sources */,
 				58CC696328B1DEBB00DE88BC /* Requestable.swift in Sources */,
 				5881343728AE03DE00B6FA8D /* LoginController.swift in Sources */,
+				585528AC28B4F9D400A8AC78 /* HomeManager.swift in Sources */,
 				58CC696A28B1DEBB00DE88BC /* Router.swift in Sources */,
 				5881343328AE03DE00B6FA8D /* AppDelegate.swift in Sources */,
 				58CC696C28B1DEBB00DE88BC /* Extension.swift in Sources */,
@@ -613,6 +676,7 @@
 				58CC698228B2355C00DE88BC /* LoginManager.swift in Sources */,
 				58CC696528B1DEBB00DE88BC /* NetworkEngine.swift in Sources */,
 				5881346728AE16C300B6FA8D /* LoginViewModel.swift in Sources */,
+				585528A628B48B7D00A8AC78 /* HomeViewModel.swift in Sources */,
 				58CC696828B1DEBB00DE88BC /* NetworkError.swift in Sources */,
 				58CC695128B1C82C00DE88BC /* BaseController.swift in Sources */,
 				58CC697B28B20B6500DE88BC /* CDUser+CoreDataProperties.swift in Sources */,
