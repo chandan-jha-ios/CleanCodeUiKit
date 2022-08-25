@@ -8,11 +8,21 @@
 import UIKit
 
 final class HomeController: BaseController {
-
+    
+    // MARK: Keys
     private enum Keys: String {
         case pageTitle = "Taxi"
     }
-    private let viewModel = HomeViewModel()
+    
+    // MARK: IBOutlets
+    @IBOutlet private(set) weak var tableView: UITableView! {
+        didSet {
+            registerCell()
+        }
+    }
+    
+    // MARK: Property
+    private(set) var viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +32,14 @@ final class HomeController: BaseController {
         fetchData()
     }
     
-    func setupBinding() {
+    // MARK: Protected Methods
+    private func setupBinding() {
         /// Manage loader activity show or hide
         viewModel.isLoading
             .skip(1)
             .subscribe(onNext: { [weak self] status in
                 /// Hide loader if `status == false`
-                print(self?.viewModel.users?.count ?? -1)
+                self?.tableView.reloadData()
             })
             .disposed(by: viewModel.disposeBag)
         
@@ -44,9 +55,8 @@ final class HomeController: BaseController {
             .disposed(by: viewModel.disposeBag)
     }
     
-    func fetchData() {
+    private func fetchData() {
         viewModel.fetchUsers()
     }
-
 }
 

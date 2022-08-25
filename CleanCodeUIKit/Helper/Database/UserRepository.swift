@@ -10,7 +10,7 @@ import Foundation
 typealias ValidationResult = (Bool, String?)
 
 protocol UserRepository {
-    func create(_ user: User)
-    func fetchAll() -> [User]
-    func validate(_ user: User) -> ValidationResult
+    func create(_ user: LoginRequest)
+    func fetchAll() -> [LoginRequest]
+    func validate(_ user: LoginRequest) -> ValidationResult
 }

@@ -20,7 +20,9 @@ extension CDUser {
     @NSManaged public var password: String?
     @NSManaged public var country: String?
 
-    func transformToUser() -> User {
-       User(userName: username ?? "", password: password ?? "", country: country ?? "")
+    func transformToUser() -> LoginRequest {
+        LoginRequest(userName: username ?? "",
+                     password: password ?? "",
+                     country: country ?? "")
     }
 }

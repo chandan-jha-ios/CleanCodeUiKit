@@ -10,7 +10,7 @@ import RxSwift
 
 protocol LoginRequestable {
     var result: PublishRelay<LoginResult> { get }
-    func login(with user: User)
+    func login(with user: LoginRequest)
 }
 
 fileprivate enum LoginErrorKeys: String {
@@ -68,7 +68,7 @@ final class LoginViewModel: LoginRequestable {
         validator.validate(value: selectedCountry.value).1
     }
     
-    func login(with user: User) {
+    func login(with user: LoginRequest) {
         guard user.userName.isEmpty == false else {
             let error = NetworkError(description: LoginErrorKeys.emptyFields.rawValue)
             result.accept(.failure(error))

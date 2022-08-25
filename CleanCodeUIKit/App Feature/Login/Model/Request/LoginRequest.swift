@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User {
+struct LoginRequest {
     var userName: String
     var password: String
     var country: String

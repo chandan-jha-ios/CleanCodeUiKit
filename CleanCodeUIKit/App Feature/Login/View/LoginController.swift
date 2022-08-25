@@ -67,9 +67,9 @@ private extension LoginController {
     
     func createTestUser() {
         let password = Utility.convertMD5(value: "Taxi@123")
-        let user = User(userName: "taxi",
-                        password: password,
-                        country: "India")
+        let user = LoginRequest(userName: "taxi",
+                                password: password,
+                                country: "India")
         if viewModel.manager.isRegistered(user: user).0 == false {
             viewModel.manager.create(user: user)
         }
@@ -145,9 +145,9 @@ private extension LoginController {
     
     func loginRequest() {
         let password = Utility.convertMD5(value: viewModel.password.value ?? "")
-        let requestData =  User(userName: viewModel.username.value ?? "",
-                                password: password,
-                                country: viewModel.selectedCountry.value)
+        let requestData =  LoginRequest(userName: viewModel.username.value ?? "",
+                                        password: password,
+                                        country: viewModel.selectedCountry.value)
         viewModel.login(with: requestData)
     }
     

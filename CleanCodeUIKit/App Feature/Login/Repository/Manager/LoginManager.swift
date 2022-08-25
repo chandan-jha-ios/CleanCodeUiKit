@@ -15,15 +15,15 @@ struct LoginManager {
         self.repository = repository
     }
     
-    func create(user: User) {
+    func create(user: LoginRequest) {
         repository.create(user)
     }
     
-    func isRegistered(user: User)-> ValidationResult {
+    func isRegistered(user: LoginRequest)-> ValidationResult {
         repository.validate(user)
     }
     
-    func validate(user: User) -> ValidationResult {
+    func validate(user: LoginRequest) -> ValidationResult {
         repository.validate(user)
     }
 }

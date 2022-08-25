@@ -1,20 +1,11 @@
 //
-//  User.swift
+//  Address.swift
 //  CleanCodeUIKit
 //
-//  Created by Chandan Jha on 23/08/22.
+//  Created by Chandan Jha on 25/08/22.
 //
 
 import Foundation
-
-// MARK: - User
-struct UserData: Resultable {
-    let id: Int
-    let name, username, email: String
-    let address: Address
-    let phone, website: String
-    let company: Company
-}
 
 // MARK: - Address
 struct Address: Codable {

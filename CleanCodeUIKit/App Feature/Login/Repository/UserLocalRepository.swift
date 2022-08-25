@@ -12,7 +12,7 @@ struct UserLocalRepository: UserRepository {
         case wrongPassword = "Entered password is wrong"
         case userNotFound = "User is not registered."
     }
-    func create(_ user: User) {
+    func create(_ user: LoginRequest) {
         let cdUser = CDUser(context: Persistence.shared.context)
         cdUser.username = user.userName
         cdUser.password = user.password
@@ -20,16 +20,16 @@ struct UserLocalRepository: UserRepository {
         Persistence.shared.saveContext()
     }
     
-    func fetchAll() -> [User] {
+    func fetchAll() -> [LoginRequest] {
         let users = Persistence.shared.fetchManageObject(object: CDUser.self)
-        var userList = [User]()
+        var userList = [LoginRequest]()
         users?.forEach({ cdUser in
             userList.append(cdUser.transformToUser())
         })
         return userList
     }
     
-    func validate(_ user: User) -> ValidationResult {
+    func validate(_ user: LoginRequest) -> ValidationResult {
         if isUserExist(userName: user.userName) {
             let result = validatePassword(user)
             let message = result ? nil : Keys.wrongPassword.rawValue
@@ -39,7 +39,7 @@ struct UserLocalRepository: UserRepository {
         }
     }
     
-    func validatePassword(_ user: User) -> Bool {
+    func validatePassword(_ user: LoginRequest) -> Bool {
         let fetchRequest = CDUser.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "username==%@ && password==%@", user.userName, user.password)
         do {

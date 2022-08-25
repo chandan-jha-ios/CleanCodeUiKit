@@ -5,7 +5,7 @@
 //  Created by Chandan Jha on 23/08/22.
 //
 
-typealias UserCompletion = ((NetworkError?, [UserData]?) -> Void)
+typealias UserCompletion = ((NetworkError?, [User]?) -> Void)
 
 protocol UserFetchable {
     func fetchUsers(service: Requestable, completion: @escaping UserCompletion)
@@ -25,7 +25,7 @@ struct HomeManager: UserFetchable {
             completion(NetworkError(statusCode: nil, description: "Something went wrong"), nil)
             return
         }
-        networkAdaptor.process(urlRequest: request, type: [UserData].self) { result in
+        networkAdaptor.process(urlRequest: request, type: [User].self) { result in
             switch result {
             case let .success(users):
                 completion(nil, users)

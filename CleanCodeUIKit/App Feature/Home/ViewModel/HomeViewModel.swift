@@ -15,7 +15,7 @@ final class HomeViewModel {
     let disposeBag = DisposeBag()
     let isLoading = BehaviorRelay<Bool>(value: false)
     let networkError = BehaviorRelay<String>(value: "")
-    var users: [UserData]?
+    var users: [User]?
     
     init(manager: UserFetchable = HomeManager()) {
         self.manager = manager
@@ -31,6 +31,17 @@ final class HomeViewModel {
             self?.users = users
             self?.isLoading.accept(false)
         }
+    }
+    
+    var numberOfRows: Int {
+        users?.count ?? 0
+    }
+    
+    func user(at index: Int) -> User? {
+        guard let users = users, users.count > index else {
+            return nil
+        }
+        return users[index]
     }
 }
 
