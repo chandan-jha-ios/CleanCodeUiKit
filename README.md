@@ -7,6 +7,9 @@ UIKit Demo with best practices CoreData+MVVM
 3. username: taxi / password: Taxi@123 can be used to login
 4. Validation is applied only on username and password
 
-
+`
+UIKit + CoreData + RxSwift + MVVM + Repository approach
+SOLID 
+`
 
 
