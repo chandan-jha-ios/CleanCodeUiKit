@@ -19,6 +19,7 @@ fileprivate enum LoginErrorKeys: String {
 }
 
 final class LoginViewModel: LoginRequestable {
+    
     let disposeBag = DisposeBag()
     let username = BehaviorRelay<String?>(value: "")
     let password = BehaviorRelay<String?>(value: "")
@@ -26,11 +27,11 @@ final class LoginViewModel: LoginRequestable {
     let country: [String]
     var result = PublishRelay<LoginResult>()
     var manager: LoginManager
-    var validator: Validator
+    var validator: LoginValidatable
     
     init(country: [String] = Constant.country,
          manager: LoginManager = LoginManager(),
-         validator: Validator = LoginValidator()) {
+         validator: LoginValidatable = LoginValidator()) {
         self.country = country
         self.manager = manager
         self.validator = validator

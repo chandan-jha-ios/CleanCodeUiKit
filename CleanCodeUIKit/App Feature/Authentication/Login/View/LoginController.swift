@@ -34,10 +34,17 @@ final class LoginController: BaseController {
     private let viewModel = LoginViewModel()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        addKeypadListener()
         createTestUser()
         setupDidload()
     }
 
+    class func loadController() -> LoginController? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: LoginController.name) as? LoginController
+        return controller
+    }
 }
     
     // MARK: Protected methods

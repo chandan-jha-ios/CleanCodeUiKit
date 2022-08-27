@@ -8,10 +8,12 @@
 import Foundation
 
 struct UserLocalRepository: UserRepository {
+    
     enum Keys: String {
         case wrongPassword = "Entered password is wrong"
         case userNotFound = "User is not registered."
     }
+    
     func create(_ user: LoginRequest) {
         let cdUser = CDUser(context: Persistence.shared.context)
         cdUser.username = user.userName

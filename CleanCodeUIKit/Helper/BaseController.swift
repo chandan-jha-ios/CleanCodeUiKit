@@ -12,7 +12,6 @@ class BaseController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateAppearance()
-        addKeypadListener()
     }
     
     func addKeypadListener() {

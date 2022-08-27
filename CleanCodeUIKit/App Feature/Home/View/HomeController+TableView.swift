@@ -9,6 +9,7 @@ import UIKit
 
 // MARK: UITableViewDataSource
 extension HomeController {
+    
     func registerCell() {
         let nib = UINib(nibName: UserTableViewCell.name, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: UserTableViewCell.name)
@@ -30,5 +31,15 @@ extension HomeController: UITableViewDataSource {
         }
         return cell
     }
+}
+
+extension HomeController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = UserDetailsController.loadController()
+        guard let user = viewModel.user(at: indexPath.row) else { return }
+        let userViewModel = UserDetailsViewModel(user: user)
+        controller.configure(viewModel: userViewModel)
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }

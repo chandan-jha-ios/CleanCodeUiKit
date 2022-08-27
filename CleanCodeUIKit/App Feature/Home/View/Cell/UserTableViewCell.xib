@@ -107,8 +107,8 @@
             <connections>
                 <outlet property="addressLabel" destination="YjI-CW-2Fp" id="JGg-no-EoL"/>
                 <outlet property="emailLabel" destination="jFS-gk-Rk3" id="hXH-Jb-QHq"/>
+                <outlet property="mobileLabel" destination="kZr-y1-TMz" id="dji-MH-Z4T"/>
                 <outlet property="nameLabel" destination="LUj-GI-cff" id="PNz-aQ-XrV"/>
-                <outlet property="phoneLabel" destination="kZr-y1-TMz" id="4Og-fQ-Jcu"/>
                 <outlet property="websiteLabel" destination="GMk-uR-2Z1" id="mRa-im-Gwk"/>
             </connections>
             <point key="canvasLocation" x="209.42028985507247" y="115.84821428571428"/>

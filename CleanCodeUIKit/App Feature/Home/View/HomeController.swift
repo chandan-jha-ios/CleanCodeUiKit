@@ -11,7 +11,7 @@ final class HomeController: BaseController {
     
     // MARK: Keys
     private enum Keys: String {
-        case pageTitle = "Taxi"
+        case pageTitle = "Home"
     }
     
     // MARK: IBOutlets
@@ -57,6 +57,12 @@ final class HomeController: BaseController {
     
     private func fetchData() {
         viewModel.fetchUsers()
+    }
+    
+    class func loadController() -> HomeController? {
+        let storyboard = UIStoryboard(name: "HomeStoryboard", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: HomeController.name) as? HomeController
+        return controller
     }
 }
 

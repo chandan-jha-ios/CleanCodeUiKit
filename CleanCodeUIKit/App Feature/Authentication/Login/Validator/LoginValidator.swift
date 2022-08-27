@@ -9,13 +9,13 @@ import Foundation
 
 fileprivate typealias ValidatorTuple = (Bool, String)
 
-protocol Validator {
+protocol LoginValidatable {
     func validate(name: String?) -> (Bool, String)
     func validate(password: String?) -> (Bool, String)
     func validate(value: String?) -> (Bool, String)
 }
 
-final class LoginValidator: Validator {
+final class LoginValidator: LoginValidatable {
     
     private enum Keys: String {
         case empty = ""

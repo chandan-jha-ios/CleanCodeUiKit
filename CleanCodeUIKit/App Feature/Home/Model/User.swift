@@ -25,6 +25,14 @@ struct User: UserPresentable, Resultable {
 
 extension User {
     
+    var latitude: Double? {
+        Double(address.geo.lat)
+    }
+    
+    var longitude: Double? {
+        Double(address.geo.lng)
+    }
+    
     var formattedAddress: String {
         "\(address.street), \(address.suite), \(address.city), ZIP: \(address.zipcode)"
     }

@@ -19,14 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func showHomeOrLogin() {
-        if UserDefaults.standard.value(forKey: "user") != nil {
-            let storyboard = UIStoryboard(name: "HomeStoryboard", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: HomeController.name)
+        if UserDefaults.standard.value(forKey: "user") != nil,
+           let controller = HomeController.loadController() {
             let navigation = UINavigationController(rootViewController: controller)
             window?.rootViewController = navigation
-        } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: LoginController.name)
+        } else if let controller = LoginController.loadController() {
             let navigation = UINavigationController(rootViewController: controller)
             window?.rootViewController = navigation
         }
